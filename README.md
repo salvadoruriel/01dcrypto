@@ -1,3 +1,32 @@
+- [01 Dcrypto tests](#01-dcrypto-tests)
+  * [Paquetes principales del Front](#paquetes-principales-del-front)
+  * [Crypto dashboard](#crypto-dashboard)
+    + [Binance](#binance)
+      - [Limites](#limites)
+        * [Web Socket](#web-socket)
+        * [Rest API](#rest-api)
+      - [Uso del API](#uso-del-api)
+        * [Rest API](#rest-api-1)
+        * [Web Socket](#web-socket-1)
+    + [Coinbase](#coinbase)
+      - [Limites](#limites-1)
+        * [Rest API](#rest-api-2)
+        * [WebSocket](#websocket)
+    + [Bitso](#bitso)
+      - [Limites](#limites-2)
+        * [Rest API](#rest-api-3)
+        * [WebSocket](#websocket-1)
+  * [MFA](#mfa)
+    + [Paquetes principales](#paquetes-principales)
+    + [Google Authenticator](#google-authenticator)
+    + [Inspiraciones](#inspiraciones)
+  * [Unit Tests](#unit-tests)
+    + [Paquetes principales](#paquetes-principales-1)
+    + [Recomendaciones](#recomendaciones)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # 01 Dcrypto tests
 Una aplicacion muestra para funcionalidades de WebSocket, Google Login y MFA con Google Authenticator.
 
