@@ -40,7 +40,7 @@ Para conexiones al WebSocket se tiene:
  - El WebSocket envia un _ping frame_ cada 3 minutos, si no se responde con un _pong frame_ en 10 minutos la conexion se desconecta.
   - Se permite enviar _pong frames_ sin que sean pedidos primero.
 ##### Rest API
-Lo limites se separan en 2: ```/api/``` y ```/sapi/```
+Lo limites se separan en 2: ```/api/``` y ```/sapi/```  
 **Para _/api/\*_**
  - 1200 peticiones por **minuto** por IP. _Excepcion para ```POST /api/v3/order``` que tiene limite de 50 por 10 segundos_.
  - Se puede ver en el _header_ de las respuestas las peticiones usada por la IP como ```X-MBX-USED-WEIGHT-(intervalNum)(intervalLetter)```.
@@ -177,7 +177,7 @@ Para buscar por roles o tipos de elementos consultar: [html-aria].
 
 [//]: # (MFA-------------------)
 [thirty-two]: <https://github.com/chrisumbel/thirty-two#readme>
-[Base32 (RFC3548)]<https://datatracker.ietf.org/doc/html/rfc3548>
+[Base32 (RFC3548)]: <https://datatracker.ietf.org/doc/html/rfc3548>
 [notp]: <https://github.com/guyht/notp>
 [HOTP (RFC4226)]: <https://datatracker.ietf.org/doc/html/rfc4226>
 [TOTP (RFC6238)]: <https://datatracker.ietf.org/doc/html/rfc6238>
