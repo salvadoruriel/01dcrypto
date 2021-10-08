@@ -1,0 +1,14 @@
+.tableContainer{
+	overflow: auto;
+}
+
+.tableHeader, .tableth{
+	position: sticky;
+	background: rgb(31, 24, 37);
+	padding: 0.4rem;
+}
+
+.table{
+	border-collapse: collapse;
+	width: 100%;
+}

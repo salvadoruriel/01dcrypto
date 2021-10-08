@@ -1,0 +1,19 @@
+.table-sticky__Column{
+	position: sticky;
+}
+
+.table-data{
+	justify-content: end;
+}
+
+.data-value{
+	text-align: end;
+}
+
+.data-valuePositive{
+	color: rgb(0, 155, 70);
+}
+
+.data-valueNegative{
+	color: rgb(215, 40, 0);
+}
