@@ -19,6 +19,7 @@ export const getSymbols = (setSymbols, loaded) => {
 				return is.includes('USD') &&
 					!item.symbol.includes('USDT') &&
 					!item.symbol.includes('USDC') &&
+					!item.symbol.includes('USDP') &&
 					!item.symbol.includes('TUSD')
 			})
 			//console.log(newData);
@@ -53,11 +54,12 @@ export const binanceConnect = (ws, symbols, setData) => {
 
 	ws.current.onmessage = e => {
 		let data = JSON.parse(e.data);
-		console.log('data', data); //useful on the test
+		//console.log('data', data); //useful on the test
 		//ignoring the standard message returned
 		if (data.result === null) return;
 
 		let newData = {
+			id: data.s,
 			symbol: data.s,
 			price: data.c,
 			change: data.p,
@@ -77,7 +79,7 @@ export const binanceConnect = (ws, symbols, setData) => {
 	setTimeout(() => {
 		console.log('Cerrando conexion.')
 		ws.current.close();
-	}, 1* 40 * 1000);
+	}, 1* 10 * 1000);
 	ws.current.onclose = e => {
 		console.log('Conexion cerrada.');
 	};

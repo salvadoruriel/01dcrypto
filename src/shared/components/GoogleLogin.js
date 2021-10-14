@@ -1,5 +1,6 @@
 import React from "react";
 //the script is loaded in index.html
+//<script> should be added on index, regardless there is an automatic retry on the js oversion
 
 //temp credentials, move to environment
 const GOOGLEID = '423083756315-udqbn1cnh3gomf8ff0vejv8epgo5cunr.apps.googleusercontent.com'
@@ -44,8 +45,8 @@ const GoogleLogin = props => {
 export default GoogleLogin;
 
 ///Javascript alternative
+//NOTE: might cause problem on routing loads
 //https://developers.google.com/identity/gsi/web/guides/display-button#javascript
-//<script> should be added on index, regardless there is an automatic retry on this
 // expects:
 //	func 			- function callback to be run and where the answer is received
 //	elementId - the div element id where the google button will be rendered instead

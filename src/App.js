@@ -1,89 +1,73 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import jwt from 'jsonwebtoken';
-import QRCode from 'react-qr-code';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Button } from '@mui/material';
+
+import Crypto from './screens/Crypto/Crypto';
+import Auth from './screens/Auth/Auth';
+import Showcase from './screens/Showcase/Showcase';
 
 import MainHeader from './shared/Navigation/MainHeader';
-import Crypto from './screens/Crypto/Crypto';
-
-import Button from './shared/components/UIElements/Button';
-import Input from './shared/components/UIElements/Input';
-import Modal from './shared/components/UIElements/Modal';
-import { jsGoogleLogin } from './shared/components/GoogleLogin';
-import { createSecret, createTOTP, createUriTOTP, googleKeyEncoder, validateTOTP } from './shared/util/otpMaker';
+import MFAValidation from './shared/components/MFAValidation';
 
 const App = () => {
-	const [inputToken, setinputToken] = useState('');
 	const [showMFAModal, setShowMFAModal] = useState(false);
-	const [validMFA, setValidMFA] = useState(false);
-	const [validado, setValidado] = useState(false);
 
-	const handleResponse = useCallback((res) => {
-		console.log(res)
-		//https://developers.google.com/identity/gsi/web/reference/js-reference#credential
-		console.log('Decoded JWT ID token: ', jwt.decode(res.credential))
-	}, []);
+	let routes = (
+		<Switch>
 
-	useEffect(() => {
-		jsGoogleLogin(handleResponse, 'buttonDiv');
-	}, [handleResponse]);
+			<Route path='/' exact>
+				<MFAValidation
+					show={showMFAModal}
+					onCancel={() => setShowMFAModal(false)}
+				/>
+				<Crypto />
+			</Route>
 
-	const showVerify = useCallback(() => {
-		setShowMFAModal(true);
-		setValidado(false);
-	}, []);
-	const unshowVerify = useCallback(() => {
-		setShowMFAModal(false);
-		setValidado(false);
-	}, []);
+			<Route path='/auth' >
+				<Auth >
+				</Auth>
+			</Route>
 
-	const validate = useCallback(() => {
-		setValidado(true);
-		console.log(createTOTP(createSecret()));
-		console.log(validateTOTP(inputToken, createSecret()));
-		if (validateTOTP(inputToken, createSecret()))
-			setValidMFA(true);
-		else setValidMFA(false);
-	}, [setValidado, setValidMFA, inputToken]);
+			<Route path='/showcase' >
+				<Showcase >
+				</Showcase>
+			</Route>
+
+			<Redirect to='/' />
+
+		</Switch>
+	);
+
+	let extraButtons = (
+		<>
+			<Button href='/showcase' color='inherit'>
+				Extras
+			</Button>
+			
+			<Button
+				variant='outlined'
+				color='secondary'
+				onClick={() => setShowMFAModal(true)}
+			>
+				MFA
+			</Button>
+
+			<Button href='/auth' color='inherit'>
+				Login
+			</Button>
+		</>
+	);
 
 	return (
 		<>
-			<MainHeader>
-				{/* <GoogleLogin callback={handleResponse}/> */}
-				<div id="buttonDiv"></div>
-				<Button onClick={showVerify}>MFA</Button>
-			</MainHeader>
-
-			<Modal
-				show={showMFAModal}
-				onCancel={unshowVerify}
-				header='Empareja tu dispositivo'
-				footer={<Button onClick={unshowVerify}>CERRAR</Button>}
-			>
-				<QRCode
-					value={createUriTOTP(
-						undefined,
-						undefined,
-						googleKeyEncoder(createSecret())
-					)}
-				/>
-				<Input
-					id="code"
-					onInput={(id, value) => setinputToken(value)}
-					type="text"
-					label="Validar código"
-					errorText="Código incorrecto"
-					isValid={!validado || validMFA}
-				>
-					{validado && validMFA && <span className='text-black'>Codigo Correcto!</span>}
-				</Input>
-				<Button onClick={validate}>
-					Validar
-				</Button>
-			</Modal>
-
-			<main>
-				<Crypto />
-			</main>
+			<Router>
+				<MainHeader>
+					{extraButtons}
+				</MainHeader>
+				<main>
+					{routes}
+				</main>
+			</Router>
 		</>
 	);
 }

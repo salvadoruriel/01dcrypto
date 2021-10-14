@@ -34,12 +34,39 @@ Una aplicación muestra para funcionalidades de WebSocket, Google Login y MFA co
 ## Paquetes principales del Front
 Sobre el Front con React se usan los siguientes paquetes (excluyendo los específicos de cada módulo):
  - [axios] Para hacer mejores llamadas por http. _[MIT License](https://github.com/axios/axios/blob/master/LICENSE)_
+ - [react-router] Para la navegacion. _[MIT License](hhttps://github.com/remix-run/react-router/blob/main/LICENSE)_
  - [jsonwebtoken] Para decodificar y verifica el login con Google. _[MIT License](https://github.com/auth0/node-jsonwebtoken/blob/master/LICENSE)_
  - [react-qr-code] Para generar QR's, usado en MFA. _[MIT License](https://github.com/rosskhanas/react-qr-code/blob/master/LICENSE)_
- - [react-transition-group] animaciones css. _[BSD-3-Clause License](https://github.com/reactjs/react-transition-group/blob/master/LICENSE)_
+ - [react-transition-group] Para animaciones css. _[BSD-3-Clause License](https://github.com/reactjs/react-transition-group/blob/master/LICENSE)_
+ - [@mui/material] Librería de componentes muy personalizables ya preparados para seguir buenas prácticas de diseño. _[MIT License](https://github.com/mui-org/material-ui/blob/master/LICENSE)_
+  - Tambien requiere instalar: ```@emotion/react``` y ```@emotion/styled```
+	- Los iconos son del paquete: ```@mui/icons-material```
+ - [react-virtualized](https://github.com/bvaughn/react-virtualized) Para cargar dinámicamente tablas grandes y reducir el impacto al rendimiento en nuestra aplicación. _[MIT License](https://github.com/bvaughn/react-virtualized/blob/master/LICENSE)_
+  - Para react 17.0 puede marcar [error el instalarlo](https://github.com/bvaughn/react-virtualized/issues/1655#issue-898743094), en ese caso usar ```--legacy-peer-deps```.
+	- [Aqui](https://github.com/bvaughn/react-virtualized/tree/master/docs) se pueden ver los componentes principales.
+ - [react-google-charts](https://github.com/RakanNimer/react-google-charts) Una librería que podría ser útil para gráficas, checar si se asemejan al estilo buscado y si no eliminarla.
 
 Los demás paquetes y enlaces se encuentran en sus respectivas secciones de uso.
 
+## Diseño de la página con MUI
+Antes conocida como _[Material-UI](https://web.archive.org/web/20210917123901/https://mui.com/blog/material-ui-is-now-mui/)_, esta librería permite agilizar el diseño consistente a lo largo de la página.  
+A continuación unos **enlaces útiles**:
+ - [Official Docs e instalación](https://mui.com/getting-started/installation/)
+ - [Theming](https://mui.com/customization/theming/) Como ajustar el tema en la aplicación (_principalmente colores y style_).
+ - [How to customize](https://mui.com/customization/how-to-customize/) Como personalizar los elementos local y globalmente.
+ - [Quick start y Globals](https://mui.com/getting-started/usage/)
+ - [CSS Baseline](https://mui.com/components/css-baseline/) Componente _opcional_ que soluciona inconsistencias comunes entre navegadores y dispositivos.
+  - Vale la pena notar que ajusta algunas configuraciones comunes del HTML.
+ - [mui Theme Creator](https://bareynol.github.io/mui-theme-creator/) Para generar y ver diseños globales. Este aun usa Material-ui aunque [ya se está trabajando la nueva versión con MUI](https://github.com/bareynol/mui-theme-creator/issues/8#issuecomment-926645716)
+ - [Default Theme](https://mui.com/customization/default-theme/#explore) La estructura del tema por default, para ver rápidamente donde se ajustan que elementos.
+### Responsive Design
+Para configuraciones específicas sobre dimensiones pueden servir los siguientes enlaces:
+ - [Breakpoints (Screen Sizes)](https://mui.com/customization/breakpoints/#default-breakpoints)
+ - [Display](https://mui.com/system/display/) Opciones generales sobre ajustar elementos, como: [ocultar elementos según las dimensiones](https://mui.com/system/display/#hiding-elements), _overflow_, _white space_, etc...
+### Material Design
+MUI se enfoca en _Material Design_, por lo que también se agregan unos enlaces útiles sobre este último:
+ - [Color Palettes](https://material.io/inline-tools/color/) Colores recomendados.
+ - [Color Tool](https://material.io/resources/color/#!/) Para observar colores en una aplicación y su accesibilidad.
 
 
 
@@ -141,7 +168,9 @@ Para el Rest Api se tienen los [límites](https://bitso.com/developers#rate-limi
 ##### WebSocket
 Para el WebSocket no se mencionan límites más allá de los streams a los cuales subscribirse, aunque sí se menciona el uso de mensajes _keep alive_ de la forma: ```{"type":"ka"}```
 
-
+### Inspiraciones
+Inspiraciones para los tableros y el look de la aplicación:
+ - [messari.io] Screener de criptomonedas.
 
 ## MFA  
 Autenticacion Multi Factor (MFA)
@@ -193,15 +222,20 @@ Para buscar por roles o tipos de elementos consultar: [html-aria].
 [//]: # (Front-------------------)
 [axios]: <https://axios-http.com/docs/intro> 
 [axios License: MIT]: <https://github.com/axios/axios/blob/master/LICENSE>
+[react-router]: <https://github.com/remix-run/react-router#readme>
+[react-router License: MIT]: <https://github.com/remix-run/react-router/blob/main/LICENSE>
 [jsonwebtoken]: <https://github.com/auth0/node-jsonwebtoken#readme>
 [jwt License: MIT]: <https://github.com/auth0/node-jsonwebtoken/blob/master/LICENSE>
 [react-qr-code]: <https://github.com/rosskhanas/react-qr-code#readme>
 [rqc License: MIT]: <https://github.com/rosskhanas/react-qr-code/blob/master/LICENSE>
 [react-transition-group]: <https://github.com/reactjs/react-transition-group>
 [rtg License: BSD-3-Clause]: <https://github.com/reactjs/react-transition-group/blob/master/LICENSE>
+[@mui/material]: <https://github.com/mui-org/material-ui>
+[react-virtualized]: <https://github.com/bvaughn/react-virtualized>
 
 [//]: # (Crypto-------------------)
 [límites de Binance]: <https://binance-docs.github.io/apidocs/spot/en/#limits>
+[messari.io]: <https://messari.io/screener>
 
 [//]: # (MFA-------------------)
 [thirty-two]: <https://github.com/chrisumbel/thirty-two#readme>
